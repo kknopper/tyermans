@@ -1,0 +1,375 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Contact"
+  description="Contact Tyermans Body Shop in Burbank, CA. Call (818) 846-7291 or email Joel@tyermans.com."
+>
+  <section class="contact-hero">
+    <div class="inner">
+      <p class="eyebrow">Get in Touch</p>
+      <h1>We'd Love to<br />Help With Your Car</h1>
+      <p class="lead">
+        Stop by, give us a call, or send a message. We're open Monday through
+        Friday, 8 AM to 5 PM.
+      </p>
+    </div>
+  </section>
+
+  <section class="contact-body">
+    <div class="inner two-col">
+
+      <!-- Contact form -->
+      <div class="form-side">
+        <h2>Send a Message</h2>
+        <form class="contact-form" id="contactForm">
+          <div class="field-row">
+            <div class="field-group">
+              <label for="name">Full Name *</label>
+              <input id="name" name="name" type="text" required placeholder="Jane Smith" />
+            </div>
+            <div class="field-group">
+              <label for="phone">Phone *</label>
+              <input id="phone" name="phone" type="tel" required placeholder="(818) 555-0000" />
+            </div>
+          </div>
+          <div class="field-group">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="jane@example.com" />
+          </div>
+          <div class="field-group">
+            <label for="service">Service Needed</label>
+            <select id="service" name="service">
+              <option value="">Select a service...</option>
+              <option>Collision / Accident Repair</option>
+              <option>Paint Correction</option>
+              <option>Dent &amp; Scratch Repair</option>
+              <option>Custom Paint Work</option>
+              <option>Full Body Restoration</option>
+              <option>Other / Not Sure</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows={4} placeholder="Tell us about your vehicle and the work needed..."></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Send Message</button>
+          <p class="form-note">
+            Prefer to call? Reach us at <a href="tel:+18188467291">(818) 846-7291</a>.
+          </p>
+        </form>
+
+        <div id="formSuccess" class="form-success" hidden>
+          <div class="check">✓</div>
+          <h3>Message sent!</h3>
+          <p>We'll get back to you shortly at the number or email you provided.</p>
+        </div>
+      </div>
+
+      <!-- Info -->
+      <div class="info-side">
+        <div class="info-block">
+          <h3>Location</h3>
+          <p>1420 West Magnolia Blvd<br />Burbank, CA 91506</p>
+          <a
+            href="https://maps.google.com/?q=1420+West+Magnolia+Blvd,+Burbank,+CA+91506"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="map-link"
+          >
+            Get Directions →
+          </a>
+        </div>
+
+        <div class="info-block">
+          <h3>Phone &amp; Email</h3>
+          <p><a href="tel:+18188467291">(818) 846-7291</a></p>
+          <p><a href="mailto:Joel@tyermans.com">Joel@tyermans.com</a></p>
+        </div>
+
+        <div class="info-block">
+          <h3>Hours</h3>
+          <table class="hours-table">
+            <tbody>
+              <tr><td>Mon – Fri</td><td>8:00 AM – 5:00 PM</td></tr>
+              <tr><td>Saturday</td><td>Closed</td></tr>
+              <tr><td>Sunday</td><td>Closed</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="map-embed">
+          <iframe
+            title="Tyermans Body Shop location"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3301.3!2d-118.32395!3d34.175541!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s1420+West+Magnolia+Blvd%2C+Burbank%2C+CA+91506!5e0!3m2!1sen!2sus!4v1"
+            width="100%"
+            height="220"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const form = document.getElementById("contactForm") as HTMLFormElement | null;
+  const success = document.getElementById("formSuccess");
+
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    form.hidden = true;
+    if (success) success.hidden = false;
+  });
+</script>
+
+<style>
+  .inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* ── Hero ── */
+  .contact-hero {
+    padding: 5rem 1.5rem 4rem;
+    border-bottom: 1px solid var(--border);
+
+    & .eyebrow {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    & h1 {
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+    }
+
+    & .lead {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 480px;
+    }
+  }
+
+  /* ── Body ── */
+  .contact-body {
+    padding: 4rem 1.5rem 6rem;
+
+    & .two-col {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 4rem;
+      align-items: start;
+
+      @media (max-width: 860px) {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+
+  /* ── Form ── */
+  .form-side {
+    & h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    & .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+
+      @media (max-width: 520px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    & .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+
+      & label {
+        font-size: 0.78rem;
+        font-weight: 500;
+        color: var(--text-muted);
+        letter-spacing: 0.03em;
+      }
+
+      & input,
+      & select,
+      & textarea {
+        background: var(--surface);
+        border: 1.5px solid var(--border);
+        border-radius: 8px;
+        padding: 0.65rem 0.9rem;
+        color: var(--text);
+        font-size: 0.9rem;
+        font-family: var(--font);
+        transition: border-color 0.2s;
+        width: 100%;
+        resize: vertical;
+
+        &::placeholder { color: #555; }
+        &:focus {
+          outline: none;
+          border-color: #555;
+        }
+      }
+
+      & select {
+        cursor: pointer;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 0.9rem center;
+        padding-right: 2.5rem;
+
+        & option { background: var(--surface2); }
+      }
+    }
+  }
+
+  .submit-btn {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.7rem 1.75rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-family: var(--font);
+    cursor: pointer;
+    transition: background 0.2s;
+    align-self: flex-start;
+
+    &:hover { background: var(--accent-hover); }
+  }
+
+  .form-note {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+
+    & a { color: var(--accent); }
+  }
+
+  .form-success {
+    text-align: center;
+    padding: 3rem 0;
+
+    & .check {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(230,57,70,0.12);
+      color: var(--accent);
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+    }
+
+    & h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    & p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+  }
+
+  /* ── Info side ── */
+  .info-side {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .info-block {
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--border);
+
+    &:first-child { padding-top: 0; }
+
+    & h3 {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    & p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+
+      & a {
+        color: var(--text);
+        transition: color 0.2s;
+
+        &:hover { color: var(--accent); }
+      }
+    }
+
+    & .map-link {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-size: 0.82rem;
+      color: var(--accent);
+      font-weight: 500;
+      transition: opacity 0.2s;
+
+      &:hover { opacity: 0.8; }
+    }
+  }
+
+  .hours-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    & td {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      padding: 0.2rem 0;
+
+      &:last-child { text-align: right; }
+    }
+  }
+
+  .map-embed {
+    margin-top: 1.5rem;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+</style>

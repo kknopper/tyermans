@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 385 80" fill="none">
+  <!-- Flame behind tire -->
+  <path d="M 36 14 C 24 2, 2 6, 2 24 C 0 34, 8 44, 16 44 C 6 52, 2 66, 14 68 C 20 70, 28 63, 26 55 C 30 64, 40 66, 38 57 C 44 62, 50 56, 46 49 C 52 52, 55 44, 49 38 Q 42 30, 36 20 Z" fill="#e63946"/>
+
+  <!-- Outer tire ring -->
+  <circle cx="53" cy="40" r="21" stroke="#f0f0f0" stroke-width="7" fill="none"/>
+  <!-- Rim ring -->
+  <circle cx="53" cy="40" r="12.5" stroke="#f0f0f0" stroke-width="1.8" fill="none"/>
+
+  <!-- 8 spokes -->
+  <line x1="65.5" y1="40"   x2="57.5" y2="40"   stroke="#f0f0f0" stroke-width="1.4" stroke-linecap="round"/>
+  <line x1="61.8" y1="31.2" x2="56.3" y2="37.1" stroke="#f0f0f0" stroke-width="1.4" stroke-linecap="round"/>
+  <line x1="53"   y1="27.5" x2="53"   y2="35.5" stroke="#f0f0f0" stroke-width="1.4" stroke-linecap="round"/>
+  <line x1="44.2" y1="31.2" x2="49.7" y2="37.1" stroke="#f0f0f0" stroke-width="1.4" stroke-linecap="round"/>
+  <line x1="40.5" y1="40"   x2="48.5" y2="40"   stroke="#f0f0f0" stroke-width="1.4" stroke-linecap="round"/>
+  <line x1="44.2" y1="48.8" x2="49.7" y2="42.9" stroke="#f0f0f0" stroke-width="1.4" stroke-linecap="round"/>
+  <line x1="53"   y1="52.5" x2="53"   y2="44.5" stroke="#f0f0f0" stroke-width="1.4" stroke-linecap="round"/>
+  <line x1="61.8" y1="48.8" x2="56.3" y2="42.9" stroke="#f0f0f0" stroke-width="1.4" stroke-linecap="round"/>
+
+  <!-- Hub -->
+  <circle cx="53" cy="40" r="4" fill="#e63946"/>
+
+  <!-- TYERMANS wordmark -->
+  <text
+    x="82" y="57"
+    font-family="Inter, system-ui, -apple-system, sans-serif"
+    font-weight="800"
+    font-style="italic"
+    font-size="48"
+    letter-spacing="-0.03em"
+    textLength="290"
+    lengthAdjust="spacingAndGlyphs"
+    fill="#e63946"
+  >TYERMANS</text>
+</svg>

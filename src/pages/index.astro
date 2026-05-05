@@ -1,0 +1,271 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PhotoGallery from "../components/PhotoGallery.astro";
+import AppointmentScheduler from "../components/AppointmentScheduler.tsx";
+
+interface Photo {
+  src: string;
+  fullSrc: string;
+  alt: string;
+  width: number;
+  height: number;
+}
+
+const BASE = "https://images.squarespace-cdn.com/content/v1/56ec57678259b54cf1f1b8c6";
+
+function photo(hash: string, filename: string, alt: string, w = 500, h = 375): Photo {
+  const fullSrc = `${BASE}/${hash}/${filename}`;
+  return { src: `${fullSrc}?format=500w`, fullSrc, alt, width: w, height: h };
+}
+
+const carsPhotos: Photo[] = [
+  photo("1468511917663-0V7GOE42U9W0G0F590C5", "IMG_3017.JPG", "Car restoration work"),
+  photo("1468511929509-O8VORM8X2VBCK158DR8M", "IMG_3021.JPG", "Auto body repair"),
+  photo("1468511942704-Q9XOR0RBQPNXOFB4RBEI", "IMG_3206.JPG", "Paint correction"),
+  photo("1468511953993-FEES61UJ6EOSK58P1A7Z", "IMG_3204.JPG", "Collision repair"),
+  photo("1468511968541-2RVS060441AZ7ROIG7OI", "IMG_3213.JPG", "Custom paint work"),
+  photo("1468512032945-0QAB2NAURT56ANBND348", "IMG_3240.JPG", "Dent removal"),
+  photo("1468512729342-JHQQM8EHK67ZGX5QBI9O", "Batmobile_Joel_2.jpg", "Batmobile custom work"),
+  photo("1468512732728-4HC26DUQZZ6I6GQP3ZCS", "Batmobile_Valente.jpg", "Batmobile restoration"),
+  photo("1468512745663-97UA7955HNSYX9J7UD4A", "IMG_1265.JPG", "Full body restoration"),
+  photo("1468512904911-KS6B3HKJ5PVLJ7T8WKUM", "IMG_1932.JPG", "Panel repair"),
+  photo("1468513275447-7LYU4OUXYGZ1PATPHPSI", "IMG_2552.JPG", "Custom red car"),
+  photo("1468513538139-7716RKQAYVG94TQGD4FD", "SHOP+PIC_3+UPLOAD.jpg", "Shop work in progress"),
+];
+
+const beforeAfterPhotos: Photo[] = [
+  photo("1468435614883-ZNHJL5JQ4DIR6K39PBBT", "IMG_0188.JPG", "Before and after repair"),
+  photo("1468435605255-FPNERQ0CFXC4D46HS6V7", "IMG_0189.JPG", "Before and after repair"),
+  photo("1468435612115-ZKAZKVVFPCGP34YZI82Q", "IMG_0190.JPG", "Before and after repair"),
+  photo("1468435618321-XKD4113G1V5GTQ1DRXXL", "IMG_0191.JPG", "Before and after repair"),
+  photo("1468435629909-R909M4OS88TRSZKB4CME", "IMG_0192.JPG", "Before and after repair"),
+  photo("1468435626996-1W3ELA9U7UFET3TLUN0P", "IMG_0193.JPG", "Before and after repair"),
+  photo("1468435633850-LC9SYAS3FGIR25B5NAZU", "IMG_0194.JPG", "Before and after repair"),
+  photo("1468435638078-YQ0YB71KFWTI4RA0RBMX", "IMG_0195.JPG", "Before and after repair"),
+  photo("1468435664766-PM04VJH9IIZEDYFL7SGO", "IMG_0196.JPG", "Before and after repair"),
+  photo("1468435656984-6XR6PSC4RCHZRGFYO1TC", "IMG_0197.JPG", "Before and after repair"),
+  photo("1468435663833-S1QY2U0LFTIHARYHGE78", "IMG_0198.JPG", "Before and after repair"),
+  photo("1468435681160-MXB0EOHK55P2VHGQ4SD3", "IMG_0200.JPG", "Before and after repair"),
+];
+---
+
+<Layout
+  title="Home"
+  description="Tyremans Body Shop — Quality auto body repair and restoration in Burbank, CA since 1948."
+>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="hero-eyebrow">Problem solvers since 1948</p>
+      <h1 class="hero-heading">Burbank's Most Trusted<br />Auto Body Shop</h1>
+      <p class="hero-sub">
+        From collision repair to full custom restorations — we've been bringing
+        cars back to life on West Magnolia for over 75 years.
+      </p>
+      <div class="hero-actions">
+        <a href="#schedule" class="btn-primary">Book an Appointment</a>
+        <a href="/about" class="btn-secondary">Our Story</a>
+      </div>
+      <ul class="hero-stats">
+        <li><strong>75+</strong> Years in Business</li>
+        <li><strong>10k+</strong> Cars Repaired</li>
+        <li><strong>5★</strong> Rated on Google</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Services strip -->
+  <section class="services-strip">
+    <div class="strip-inner">
+      {[
+        { icon: "⚙", label: "Collision & Accident Repair" },
+        { icon: "✦", label: "Paint Correction" },
+        { icon: "◈", label: "Dent & Scratch Repair" },
+        { icon: "◉", label: "Custom Paint Work" },
+        { icon: "⬡", label: "Full Body Restoration" },
+      ].map((s) => (
+        <div class="service-item">
+          <span class="service-icon">{s.icon}</span>
+          <span>{s.label}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Galleries -->
+  <section class="galleries">
+    <div class="inner">
+      <PhotoGallery photos={carsPhotos} galleryId="cars" title="Cars We've Worked On" />
+      <PhotoGallery photos={beforeAfterPhotos} galleryId="before-after" title="Before & After" />
+    </div>
+  </section>
+
+  <!-- Scheduler -->
+  <section class="schedule-section" id="schedule">
+    <div class="inner">
+      <div class="schedule-header">
+        <h2>Schedule a Visit</h2>
+        <p>Pick a time that works for you — we'll call to confirm.</p>
+      </div>
+      <AppointmentScheduler client:load />
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    padding: 6rem 1.5rem 5rem;
+    text-align: center;
+
+    & .hero-inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    & .hero-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    & .hero-heading {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+    }
+
+    & .hero-sub {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 520px;
+      margin: 0 auto 2rem;
+    }
+
+    & .hero-actions {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+
+    & .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      list-style: none;
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+      flex-wrap: wrap;
+
+      & li {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+
+        & strong {
+          display: block;
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: var(--text);
+          letter-spacing: -0.02em;
+        }
+      }
+    }
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    padding: 0.7rem 1.75rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: background 0.2s;
+
+    &:hover { background: var(--accent-hover); }
+  }
+
+  .btn-secondary {
+    border: 1.5px solid var(--border);
+    color: var(--text-muted);
+    padding: 0.7rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: border-color 0.2s, color 0.2s;
+
+    &:hover { border-color: #555; color: var(--text); }
+  }
+
+  /* ── Services strip ── */
+  .services-strip {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    padding: 1.25rem 1.5rem;
+
+    & .strip-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem 2rem;
+    }
+
+    & .service-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+
+      & .service-icon {
+        color: var(--accent);
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  /* ── Galleries ── */
+  .galleries {
+    padding: 5rem 0 1rem;
+  }
+
+  /* ── Scheduler ── */
+  .schedule-section {
+    padding: 4rem 0 6rem;
+
+    & .schedule-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+
+      & h2 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: var(--text);
+        margin-bottom: 0.5rem;
+      }
+
+      & p {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+      }
+    }
+  }
+</style>

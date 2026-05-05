@@ -1,0 +1,249 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="About"
+  description="Tyermans Body Shop has been serving Burbank, CA since 1948. Learn about our history and team."
+>
+  <section class="about-hero">
+    <div class="inner">
+      <p class="eyebrow">Est. 1948</p>
+      <h1>Problem Solvers<br />Since 1948</h1>
+      <p class="lead">
+        For over 75 years, Tyermans has been the shop Burbank trusts to make
+        things right — from fender benders to ground-up restorations.
+      </p>
+    </div>
+  </section>
+
+  <section class="about-body">
+    <div class="inner two-col">
+      <div class="content">
+        <h2>Our Story</h2>
+        <p>
+          Tyermans Body Shop opened its doors on West Magnolia Boulevard in 1948.
+          What started as a small family operation grew into one of the most
+          respected auto body shops in the San Fernando Valley — built on a simple
+          promise: fix it right the first time.
+        </p>
+        <p>
+          Decades of hands-on experience mean we've seen everything from minor
+          door dings to complete chassis rebuilds. Every car that comes through
+          our doors gets the same attention, whether it's a daily driver or a
+          weekend show car.
+        </p>
+        <p>
+          We work with all makes and models, handle insurance claims, and keep
+          you informed every step of the way. No surprises — just straight talk
+          and quality work.
+        </p>
+
+        <p>
+          At Tyermans, we adhere to all cars both older and newer models. Below
+          is a list of services we offer:
+        </p>
+
+        <h2>Services</h2>
+        <ul class="services-list">
+          <li>Suspension</li>
+          <li>Steering</li>
+          <li>Alignment</li>
+          <li>Tune-up</li>
+          <li>Engine</li>
+          <li>Diagnostics &amp; Repairs</li>
+          <li>Brakes</li>
+          <li>Tires</li>
+          <li>Balancing</li>
+        </ul>
+
+        <h2>Special Services</h2>
+        <ul class="services-list">
+          <li>Performance Tuning</li>
+          <li>Brake &amp; Suspension Upgrades</li>
+          <li>Electrical Upgrades</li>
+          <li>Detailing</li>
+          <li>Custom Fabrications &amp; Welding</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h3>Shop Info</h3>
+        <dl>
+          <dt>Address</dt>
+          <dd>
+            1420 West Magnolia Blvd<br />
+            Burbank, CA 91506
+          </dd>
+          <dt>Phone</dt>
+          <dd><a href="tel:+18188467291">(818) 846-7291</a></dd>
+          <dt>Email</dt>
+          <dd><a href="mailto:Joel@tyermans.com">Joel@tyermans.com</a></dd>
+          <dt>Hours</dt>
+          <dd>
+            Mon – Fri: 8:00 AM – 5:00 PM<br />
+            Sat – Sun: Closed
+          </dd>
+        </dl>
+        <a href="/#schedule" class="cta-btn">Book an Appointment</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* ── Hero ── */
+  .about-hero {
+    padding: 5rem 1.5rem 4rem;
+    border-bottom: 1px solid var(--border);
+
+    & .eyebrow {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    & h1 {
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+    }
+
+    & .lead {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+  }
+
+  /* ── Body ── */
+  .about-body {
+    padding: 4rem 1.5rem 6rem;
+
+    & .two-col {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 4rem;
+      align-items: start;
+
+      @media (max-width: 860px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    & .content {
+      & h2 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--text);
+        letter-spacing: -0.02em;
+        margin-bottom: 0.75rem;
+        margin-top: 2rem;
+
+        &:first-child { margin-top: 0; }
+      }
+
+      & p {
+        color: var(--text-muted);
+        line-height: 1.75;
+        margin-bottom: 1rem;
+        font-size: 0.95rem;
+      }
+    }
+
+    & .services-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      & li {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        padding-left: 1rem;
+        position: relative;
+
+        &::before {
+          content: "—";
+          position: absolute;
+          left: 0;
+          color: var(--accent);
+        }
+      }
+    }
+  }
+
+  /* ── Info card ── */
+  .info-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.75rem;
+    position: sticky;
+    top: 80px;
+
+    & h3 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    & dl {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    & dt {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+
+    & dd {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+
+      & a {
+        color: var(--text);
+        transition: color 0.2s;
+
+        &:hover { color: var(--accent); }
+      }
+    }
+
+    & .cta-btn {
+      display: block;
+      text-align: center;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+
+      &:hover { background: var(--accent-hover); }
+    }
+  }
+</style>
